@@ -1,5 +1,8 @@
 # Random-Meal-Finder-UofM
 
+![open issue](https://img.shields.io/github/issues-raw/mlhalbert/Random-Meal-Finder-UofM)
+![closed issue](https://img.shields.io/github/issues-closed-raw/mlhalbert/Random-Meal-Finder-UofM)
+
 ## Description
 Random-Meal-Finder-UofM is a simple recipe finder application that allows you to search for a specific kind of recipe or allow the Chaos dinner button to choose for you! This app will run in the browser and feature dynamically updated HTML and CSS powered by <????? CSS framework>.
 
