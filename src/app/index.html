@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link href="/dist/css/output.css" rel="stylesheet"> -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <title>Random Meal Generator</title>
 </head>
 
 <body>
@@ -17,38 +17,69 @@
     Random Meal Finder
   </header>
   </div>
-
-    <div>
-        <button class="btnheader" id="randon-meal">Suprise Me</button>
-    </div>
-    
-    <div id ="main">
-      
-    </div>
-    <div class="list">
-            <div class="card">
+  
+          <div class="grid grid-rows-3 grid-flow-col gap-4 ml-20">
+            <div class="row-span-3 md:container md:mx-auto">
               <div class="card-header">
-                <h2>Search for a meal</h2>
+                <form>
+                  <label for="mealId">Search for Meal: </label>
+                  <input type="text" id="mealId"><br><br>
+                  <label for="specials">Do not include:</label>
+                  <select name="specials" id="specials">
+                    <option value="milk">Milk</option>
+                    <option value="eggs">Eggs</option>
+                    <option value="fish">Fish</option>
+                    <option value="soy">Soy</option>
+                    <option value="shellfish">Shellfish</option>
+                    <option value="nuts">Nuts</option>
+                    <option value="wheat">Wheat</option>
+                    <option value="kosher">Non-Kosher Meals</option>
+                    <option value="halal">Halal Meals</option>
+                    <option value="noAlcohol">Meals with Alcohol</option>
+                </select>
+                <br><br>
+                  <input type="submit" value="Submit" class="rounded-t-lg bg-indigo-500/50" >
+                </form>
               </div>
-              <div class="card-body">
-                
+            </div>
+            <div class="col-span-2 md:container md:mx-auto">
+              <div>
+                <button class="rounded-t-lg bg-indigo-500/50" id="randon-meal">Suprise Me (Random Meal Generator)</button>
+                <br>
+                <br>
+                <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                  <img class="w-full" src="./assets/images/pizza.png" alt="Sunset in the mountains">
+                  <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+                    <p class="text-gray-700 text-base">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                    </p>
+                  </div>
+                  <div class="px-6 pt-4 pb-2">
+                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+                  </div>
+                </div>
+            </div>
+     
+            </div>
+            <div class="col-span-2 md:container md:mx-auto">
+              <p>Details of selected Meal</p>
+              <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                <img class="w-full" src="./assets/images/cooking.jpg" alt="Sunset in the mountains">
+                <div class="px-6 py-4">
+                  <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+                  <p class="text-gray-700 text-base">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                  </p>
+                </div>
+                <div class="px-6 pt-4 pb-2">
+                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+                </div>
               </div>
-                <button id="search-meal" class="btn">button</button>
-              </div>
-              <div class="food-allergy" class="allergy">button</div>
-              <label for="specials">Do not include:</label>
-                <select name="specials" id="specials">
-                  <option value="milk">Milk</option>
-                  <option value="eggs">Eggs</option>
-                  <option value="fish">Fish</option>
-                  <option value="soy">Soy</option>
-                  <option value="shellfish">Shellfish</option>
-                  <option value="nuts">Nuts</option>
-                  <option value="wheat">Wheat</option>
-                  <option value="kosher">Non-Kosher Meals</option>
-                  <option value="halal">Halal Meals</option>
-                  <option value="noAlcohol">Meals with Alcohol</option>
-              </select>
             </div>
           </div>
       
