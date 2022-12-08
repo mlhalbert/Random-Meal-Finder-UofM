@@ -23,7 +23,7 @@
               <div class="card-header">
                 <form>
                   <label for="mealId">Search for Meal: </label>
-                  <input type="text" id="mealId"><br><br>
+                  <input type="text" id="search-field"><br><br>
                   <label for="specials">Do not include:</label>
                   <select name="specials" id="specials">
                     <option value="milk">Milk</option>
@@ -38,7 +38,7 @@
                     <option value="noAlcohol">Meals with Alcohol</option>
                 </select>
                 <br><br>
-                  <input type="submit" value="Submit" class="rounded-t-lg bg-indigo-500/50" >
+                  <input type="submit" id="search-btn" value="Submit" class="rounded-t-lg bg-indigo-500/50" >
                 </form>
               </div>
             </div>
@@ -48,11 +48,11 @@
                 <br>
                 <br>
                 <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                  <img class="w-full" src="./assets/images/pizza.png" alt="Sunset in the mountains">
+                  <img class="w-full">
                   <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
-                    <p class="text-gray-700 text-base">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                    <div class="font-bold text-xl mb-2">Random Fact</div>
+                    <p class="text-gray-700 text-base" id="display-fact">
+
                     </p>
                   </div>
                   <div class="px-6 pt-4 pb-2">
@@ -85,6 +85,6 @@
       
         </body>   
     </footer>
-    
+    <script src="../script.js"></script>
 </body>
 </html>
