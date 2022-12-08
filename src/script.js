@@ -1,3 +1,4 @@
+
 // variables for free dictionary random facts
 // random fact display- will need to change after html
 var fact = document.getElementById('display-fact')
@@ -66,3 +67,9 @@ function getFact() {
         })
 
 }
+
+mobiscroll.select('#multiple-group-select', {
+    inputElement: document.getElementById('my-input'),
+    touchUi: false
+});
+

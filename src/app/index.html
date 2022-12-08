@@ -10,32 +10,41 @@
 </head>
 
 <body>
-
-
   <div class="content-center h-14 bg-gradient-to-r from-cyan-500 to-blue-500">
   <header class="text-3xl font-bold underline text-center">
     Random Meal Finder
   </header>
   </div>
-  
           <div class="grid grid-rows-3 grid-flow-col gap-4 ml-20">
             <div class="row-span-3 md:container md:mx-auto">
               <div class="card-header">
                 <form>
                   <label for="mealId">Search for Meal: </label>
-                  <input type="text" id="search-field"><br><br>
-                  <label for="specials">Do not include:</label>
-                  <select name="specials" id="specials">
-                    <option value="milk">Milk</option>
-                    <option value="eggs">Eggs</option>
-                    <option value="fish">Fish</option>
-                    <option value="soy">Soy</option>
-                    <option value="shellfish">Shellfish</option>
-                    <option value="nuts">Nuts</option>
-                    <option value="wheat">Wheat</option>
-                    <option value="kosher">Non-Kosher Meals</option>
-                    <option value="halal">Halal Meals</option>
-                    <option value="noAlcohol">Meals with Alcohol</option>
+                  <input type="text" id="mealId"><br><br>
+                  <label for="specials">Specifications:</label>
+                  <label>
+                    <input mbsc-input id="my-input" data-dropdown="true"/>
+                  </label>
+                  <select id="multiple-group-select">
+                    <optgroup label="Religious specifications:">
+                        <option value="kosher">Kosher</option>
+                        <option value="halal">Halal</option>
+                        <option value="alcohol">No alcohol</option>
+                    </optgroup>
+                    <optgroup label="Allergies:">
+                        <option value="milk">Milk</option>
+                        <option value="eggs">Eggs</option>
+                        <option value="fish">Fish</option>
+                        <option value="shellfish">Shellfish</option>
+                        <option value="nuts">Nuts</option>
+                        <option value="soy">Soy</option>
+                        <option value="wheat">Wheat</option>
+                    </optgroup>
+                    <optgroup label="Diets:">
+                      <option value="vegan">Vegan</option>
+                      <option value="vegetarian">Vegetarian</option>
+                  </optgroup>
+                </select>
                 </select>
                 <br><br>
                   <input type="submit" id="search-btn" value="Submit" class="rounded-t-lg bg-indigo-500/50" >
