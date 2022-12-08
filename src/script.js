@@ -2,18 +2,23 @@
 // variables for free dictionary random facts
 // random fact display- will need to change after html
 var fact = document.getElementById('display-fact')
+var mealInst = document.getElementById('meal-inst')
+var mealHeading = document.getElementById('meal-heading')
+var mealImage = document.getElementById('meal-img')
 // fact returned from api
 var selectedFact= "";
 // fact stored in local storage
 var storedFact = [];
 // search meal button
 var searchButton = document.getElementById('search-btn');
+var randomButton = document.getElementById('randon-meal');
 //word added into api
 //var wordFact = "";
 
 // user supplied input
 var userInput = document.getElementById('search-field');
 
+var statusCode = ""
 
 function init(){
     console.log("We are starting")
@@ -38,38 +43,143 @@ searchButton.addEventListener('click', function(event){
     });
 
 function getFact() {
-    console.log("get fact function called")
+    // console.log("get fact function called")
+    mealImage.innerHTML = ""
+    mealInst.innerHTML = ""
+    fact.innerHTML = ""
+
+    if (userInput.value === "") {
+        fact.innerHTML = "Please provide input to search. You can try our awesome Random Generator Meal option."
+        return;
+    }
 
     var requestUrl = 
     'https://api.dictionaryapi.dev/api/v2/entries/en/'+userInput.value
 
+
     fetch(requestUrl)
         .then(function (response) {
+            console.log(response)
+            statusCode = response.status
             return response.json();
-
         })
+
         .then(function (data) {
-            console.log(data)
+            if (statusCode == 200 ) {
+                console.log(data)
+                var word = data[0]
+                // console.log(word)
+                var definition = data[0].meanings[0].definitions[0].definition
+                // console.log(definition)
+                // push data
+                fact.innerHTML = definition;
+                mealSearch()
+                
+            } 
+            if (statusCode == 404 ) {
+                // console.log("Failed")
+                fact.innerHTML = "Sorry pal, we couldn’t find meal/receipe for the word you were looking for."
+                mealSearch()
+            }
 
-            var word = data[0]
-            console.log(word)
-            var definition = data[0].meanings[0].definitions[0].definition
-            console.log(definition)
-
-            // push data
-            fact.innerHTML = definition;
-            
         // create a paragraph element for every word and its definition
         // var dictionaryWord = document.createElement('p');
         // dictionaryWord.textContent = word;
         // fact.appendChild(dictionaryWord);
 
         })
+        .catch(error => {
+            fact.innerHTML = "Something went wrong. Please try after sometime."
+        })
+}
+
+
+function mealSearch() {
+    console.log("Meal Search function called.")
+
+    var mealUrl = 
+    'https://themealdb.com/api/json/v1/1/search.php?s=' + userInput.value
+
+
+    fetch(mealUrl)
+        .then(function (response) {
+            statusCode = response.status
+            console.log(response)
+            return response.json();
+        })
+
+        .then(function (data) {
+
+        if (statusCode == 200 && data) {
+            console.log(data["meals"][0])
+            mealInst.innerHTML = data["meals"][0]["strInstructions"]
+            mealHeading.innerHTML = "Meal Instructions for " + data["meals"][0]["strMeal"]
+            mealImage.innerHTML = "<img src=" + data["meals"][0]["strMealThumb"] + ">"
+            
+        } 
+        if (statusCode == 404 ) {
+            // console.log("Failed")
+            mealInst.innerHTML = "Sorry pal, we couldn’t find meal/receipe Instructions for the word you were looking for."
+            mealHeading.innerHTML = "Meal Instructions not found!"
+        }
+    })
+    .catch(error => {
+        mealInst.innerHTML = "Sorry pal, we couldn’t find meal/receipe Instructions for the word you were looking for. We are adding new meal receipe to our repo. Request you to comeback after sometime."
+        mealHeading.innerHTML = "Meal Instructions not found in API!"
+    })
+}
+
+
+
+randomButton.addEventListener('click', function(event){
+    event.preventDefault();
+
+    //random fact object
+    var randomFact = {
+       searchInput: userInput.value.trim(),
+        };
+    randomMealGenerator();
+    });
+
+
+
+function randomMealGenerator() {
+    console.log("Random Meal Search function called.")
+
+    var mealUrl = 'http://themealdb.com/api/json/v1/1/random.php'
+
+
+    fetch(mealUrl)
+        .then(function (response) {
+            statusCode = response.status
+            console.log(response)
+            return response.json();
+        })
+
+        .then(function (data) {
+
+        if (statusCode == 200 && data) {
+            console.log(data["meals"][0])
+            mealInst.innerHTML = data["meals"][0]["strInstructions"]
+            mealHeading.innerHTML = "Meal Instructions for " + data["meals"][0]["strMeal"]
+            mealImage.innerHTML = "<img src=" + data["meals"][0]["strMealThumb"] + ">"
+            
+        } 
+        if (statusCode == 404 ) {
+            // console.log("Failed")
+            mealInst.innerHTML = "Sorry pal, we couldn’t find meal/receipe Instructions for the word you were looking for."
+            mealHeading.innerHTML = "Meal Instructions not found!"
+        }
+    })
+    .catch(error => {
+        mealInst.innerHTML = "Sorry pal, we couldn’t find meal/receipe Instructions for the word you were looking for. We are adding new meal receipe to our repo. Request you to comeback after sometime."
+        mealHeading.innerHTML = "Meal Instructions not found in API!"
+    })
 
 }
 
-mobiscroll.select('#multiple-group-select', {
-    inputElement: document.getElementById('my-input'),
-    touchUi: false
-});
+// mobiscroll.select('#multiple-group-select', {
+//     inputElement: document.getElementById('my-input'),
+//     touchUi: false
+// });
 

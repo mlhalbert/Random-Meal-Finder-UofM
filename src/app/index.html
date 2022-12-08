@@ -15,13 +15,15 @@
     Random Meal Finder
   </header>
   </div>
-          <div class="grid grid-rows-3 grid-flow-col gap-4 ml-20">
-            <div class="row-span-3 md:container md:mx-auto">
-              <div class="card-header">
+  <br>
+  <br>
+          <div class="grid grid-col-4 grid-flow-col gap-4 ml-20">
+            <div class="row-span-1 md:container md:mx-auto">
+              <div class="card-header text-center">
                 <form>
                   <label for="mealId">Search for Meal: </label>
-                  <input type="text" id="search-field"><br><br>
-                  <label for="specials">Specifications:</label>
+                  <input type="text" id="search-field" class="border border-indigo-500/50"><br><br>
+                  <!-- <label for="specials">Specifications:</label>
                   <label>
                     <input mbsc-input id="my-input" data-dropdown="true"/>
                   </label>
@@ -45,48 +47,44 @@
                       <option value="vegetarian">Vegetarian</option>
                   </optgroup>
                 </select>
-                </select>
+                </select> -->
                 <br><br>
-                  <input type="submit" id="search-btn" value="Submit" class="rounded-t-lg bg-indigo-500/50" >
+                  <input type="submit" id="search-btn" value=" Search" class="bg-blue-500/50 hover:bg-blue-700/50 text-white font-bold py-2 px-4 rounded" >
                 </form>
+
+                <br>
+                <br>
+                <button class="bg-blue-500/50 hover:bg-blue-700/50 text-white font-bold py-2 px-4 rounded" id="randon-meal">Suprise Me (Random Meal Generator)</button>
               </div>
             </div>
-            <div class="col-span-2 md:container md:mx-auto">
+            <div class="col-span-1 md:container md:mx-auto">
               <div>
-                <button class="rounded-t-lg bg-indigo-500/50" id="randon-meal">Suprise Me (Random Meal Generator)</button>
-                <br>
-                <br>
                 <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                  <img class="w-full">
-                  <div class="px-6 py-4">
+                  <div class="px-6 py-4" id="child">
                     <div class="font-bold text-xl mb-2">Random Fact</div>
+                    <img id="poke-img" />
                     <p class="text-gray-700 text-base" id="display-fact">
-
                     </p>
                   </div>
-                  <div class="px-6 pt-4 pb-2">
-                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
-                  </div>
                 </div>
             </div>
-     
-            </div>
-            <div class="col-span-2 md:container md:mx-auto">
-              <p>Details of selected Meal</p>
+            </div>           
+            <div class="col-span-1 md:container md:mx-auto">
+
               <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                <img class="w-full" src="./assets/images/cooking.jpg" alt="Sunset in the mountains">
                 <div class="px-6 py-4">
-                  <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
-                  <p class="text-gray-700 text-base">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                  <div class="font-bold text-xl mb-2" id="meal-heading">Meal Instructions</div>
+                  <p class="text-gray-700 text-base" id="meal-inst">
                   </p>
                 </div>
-                <div class="px-6 pt-4 pb-2">
-                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+              </div>
+            </div>
+            <div class="row-span-1 md:container md:mx-auto">
+              <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                <div class="px-6 py-4">
+                  <div class="font-bold text-xl mb-2" id="meal-heading">How my meal looks?</div>
+                  <div id="meal-img">
+                  </div>
                 </div>
               </div>
             </div>
