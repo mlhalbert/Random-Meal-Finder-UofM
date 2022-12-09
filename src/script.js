@@ -14,6 +14,8 @@ var storedFact = [];
 var searchButton = document.getElementById('search-btn');
 var randomButton = document.getElementById('randon-meal');
 var searchHistoryButton = document.getElementById('search-history');
+var clearHistoryButton = document.getElementById('clear-history');
+var historyList = document.getElementById('thelist')
 //word added into api
 //var wordFact = "";
 
@@ -51,6 +53,7 @@ function getFact() {
     mealLook.innerHTML = ""
     mealInst.innerHTML = ""
     mealHeading = ""
+    historyList.innerHTML = ""
 
     console.log(Math.floor(Math.random() * 100))
 
@@ -80,6 +83,7 @@ function getFact() {
                 // push data
                 fact.innerHTML = definition;
                 mealSearch()
+                userInput.value = ""
                 
             } 
             if (statusCode == 404 ) {
@@ -88,17 +92,12 @@ function getFact() {
                 mealLook.innerHTML = "Here is a Pokemon for you!"
                 mealSearch()
                 randompokemonSearch()
-
+                userInput.value = ""
             }
-
-        // create a paragraph element for every word and its definition
-        // var dictionaryWord = document.createElement('p');
-        // dictionaryWord.textContent = word;
-        // fact.appendChild(dictionaryWord);
-
         })
         .catch(error => {
             fact.innerHTML = "Something went wrong. Please try after sometime."
+            userInput.value = ""
         })
 }
 
@@ -159,6 +158,7 @@ randomButton.addEventListener('click', function(event){
 
 function randomMealGenerator() {
     console.log("Random Meal Search function called.")
+    historyList.innerHTML = ""
 
     var mealUrl = 'http://themealdb.com/api/json/v1/1/random.php'
 
@@ -211,14 +211,22 @@ searchHistoryButton.addEventListener('click', function(event){
     
 function searchHistory() {
     var historySearch = JSON.parse(localStorage.getItem("facts"))
-    var hist = []
+    historyList.innerHTML = ""
     // console.log(historySearch)
     for (var i = 0 ; i < historySearch.length; i++) {
         // console.log(historySearch[i]["searchInput"])
-        hist.push(historySearch[i]["searchInput"])
-  
-
+        historyList.innerHTML += "<li>" + historySearch[i]["searchInput"] + "</li>"
     }
-    console.log(hist)
     searchHistoryButton.classList.toggle(hist);
+}
+
+clearHistoryButton.addEventListener('click', function(event){
+    event.preventDefault();
+    clearHistory()
+    });
+
+    
+function clearHistory() {
+    historyList.innerHTML = ""
+    localStorage.clear()
 }
