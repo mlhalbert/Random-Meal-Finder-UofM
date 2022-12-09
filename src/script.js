@@ -229,4 +229,10 @@ clearHistoryButton.addEventListener('click', function(event){
 function clearHistory() {
     historyList.innerHTML = ""
     localStorage.clear()
+    var clearStorage = {
+        searchInput: null,
+         };
+ 
+     clearFact.push(clearStorage)
+     localStorage.setItem("facts", JSON.stringify(clearFact))
 }
