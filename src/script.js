@@ -52,7 +52,7 @@ function getFact() {
     fact.innerHTML = ""
     mealLook.innerHTML = ""
     mealInst.innerHTML = ""
-    mealHeading = ""
+    mealHeading.innerHTML = ""
     historyList.innerHTML = ""
 
     console.log(Math.floor(Math.random() * 100))
@@ -160,7 +160,7 @@ function randomMealGenerator() {
     console.log("Random Meal Search function called.")
     historyList.innerHTML = ""
 
-    var mealUrl = 'http://themealdb.com/api/json/v1/1/random.php'
+    var mealUrl = 'https://themealdb.com/api/json/v1/1/random.php'
 
 
     fetch(mealUrl)
