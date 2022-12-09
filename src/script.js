@@ -4,6 +4,7 @@
 var fact = document.getElementById('display-fact')
 var mealInst = document.getElementById('meal-inst')
 var mealHeading = document.getElementById('meal-heading')
+var mealLook = document.getElementById('meal-look')
 var mealImage = document.getElementById('meal-img')
 // fact returned from api
 var selectedFact= "";
@@ -12,6 +13,7 @@ var storedFact = [];
 // search meal button
 var searchButton = document.getElementById('search-btn');
 var randomButton = document.getElementById('randon-meal');
+var searchHistoryButton = document.getElementById('search-history');
 //word added into api
 //var wordFact = "";
 
@@ -35,10 +37,9 @@ searchButton.addEventListener('click', function(event){
        searchInput: userInput.value.trim(),
         };
 
-//    var returnedFact = randomFact.word
-    // console.log(randomFact)
-    // storedFact.push(randomFact)
-    // localStorage.setItem("facts:", JSON.stringify(storedFact))
+    storedFact.push(randomFact)
+    localStorage.setItem("facts", JSON.stringify(storedFact))
+
     getFact();
     });
 
@@ -47,6 +48,9 @@ function getFact() {
     mealImage.innerHTML = ""
     mealInst.innerHTML = ""
     fact.innerHTML = ""
+    mealLook.innerHTML = ""
+    mealInst.innerHTML = ""
+    mealHeading = ""
 
     console.log(Math.floor(Math.random() * 100))
 
@@ -80,8 +84,11 @@ function getFact() {
             } 
             if (statusCode == 404 ) {
                 // console.log("Failed")
-                fact.innerHTML = "Sorry pal, we couldn’t find meal/receipe for the word you were looking for."
+                fact.innerHTML = "Sorry pal, we couldn’t find the meaning for the word you were looking for."
+                mealLook.innerHTML = "Here is a Pokemon for you!"
                 mealSearch()
+                randompokemonSearch()
+
             }
 
         // create a paragraph element for every word and its definition
@@ -117,17 +124,22 @@ function mealSearch() {
             mealInst.innerHTML = data["meals"][0]["strInstructions"]
             mealHeading.innerHTML = "Meal Instructions for " + data["meals"][0]["strMeal"]
             mealImage.innerHTML = "<img src=" + data["meals"][0]["strMealThumb"] + ">"
+            mealLook.innerHTML = "How my meal looks."
             
         } 
         if (statusCode == 404 ) {
             // console.log("Failed")
             mealInst.innerHTML = "Sorry pal, we couldn’t find meal/receipe Instructions for the word you were looking for."
             mealHeading.innerHTML = "Meal Instructions not found!"
+            mealLook.innerHTML = "Here is a Pokemon for you!"
+            randompokemonSearch()
         }
     })
     .catch(error => {
         mealInst.innerHTML = "Sorry pal, we couldn’t find meal/receipe Instructions for the word you were looking for. We are adding new meal receipe to our repo. Request you to comeback after sometime."
         mealHeading.innerHTML = "Meal Instructions not found in API!"
+        mealLook.innerHTML = "Here is a Pokemon for you!"
+        randompokemonSearch()
     })
 }
 
@@ -165,6 +177,7 @@ function randomMealGenerator() {
             mealInst.innerHTML = data["meals"][0]["strInstructions"]
             mealHeading.innerHTML = "Meal Instructions for " + data["meals"][0]["strMeal"]
             mealImage.innerHTML = "<img src=" + data["meals"][0]["strMealThumb"] + ">"
+            mealLook.innerHTML = "How my meal looks."
             
         } 
         if (statusCode == 404 ) {
@@ -176,12 +189,36 @@ function randomMealGenerator() {
     .catch(error => {
         mealInst.innerHTML = "Sorry pal, we couldn’t find meal/receipe Instructions for the word you were looking for. We are adding new meal receipe to our repo. Request you to comeback after sometime."
         mealHeading.innerHTML = "Meal Instructions not found in API!"
+        mealLook.innerHTML = "Here is a Pokemon for you!"
+        randompokemonSearch()
     })
 
 }
 
-// mobiscroll.select('#multiple-group-select', {
-//     inputElement: document.getElementById('my-input'),
-//     touchUi: false
-// });
 
+function randompokemonSearch() {
+    var randomNumber = Math.floor(Math.random() * 100)
+    var pokemonurl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+ randomNumber + '.png'
+    mealImage.innerHTML = "<img src=" + pokemonurl + ">"
+}
+
+
+searchHistoryButton.addEventListener('click', function(event){
+    event.preventDefault();
+    searchHistory();
+    });
+
+    
+function searchHistory() {
+    var historySearch = JSON.parse(localStorage.getItem("facts"))
+    var hist = []
+    // console.log(historySearch)
+    for (var i = 0 ; i < historySearch.length; i++) {
+        // console.log(historySearch[i]["searchInput"])
+        hist.push(historySearch[i]["searchInput"])
+  
+
+    }
+    console.log(hist)
+    searchHistoryButton.classList.toggle(hist);
+}
