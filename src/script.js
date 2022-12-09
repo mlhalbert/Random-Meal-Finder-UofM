@@ -159,6 +159,7 @@ randomButton.addEventListener('click', function(event){
 function randomMealGenerator() {
     console.log("Random Meal Search function called.")
     historyList.innerHTML = ""
+    fact.innerHTML = ""
 
     var mealUrl = 'https://themealdb.com/api/json/v1/1/random.php'
 
