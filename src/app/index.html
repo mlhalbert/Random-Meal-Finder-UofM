@@ -4,117 +4,86 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link href="/dist/css/output.css" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" href="./css/style.css" -->
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Random Meal Generator</title>
 </head>
 
 <body>
-  <div class="h-14 bg-gradient-to-r from-cyan-500 to-blue-500">
-  <header class="text-3xl font-bold underline text-center font-sans">
-    Random Meal Finder
-  </header>
-<div class="flex justify-items-center">
-  <div id="image-gif" style="width: 50vw" >
-    <div class="py-5 rounded-lg">
-      <img src ="./assets/images/Foodie.gif">
-    </div>
-  </div>
-  <div id="image-gif" style="width: 50vw">
-    <div class="py-5 rounded-lg">
-      <img src ="./assets/images/Gif2.gif">
-    </div>
-  </div>
-  <div id="image-gif" style="width: 50vw" >
-    <div class="py-5 rounded-lg">
-      <img src ="./assets/images/Foodyummy.gif">
-    </div>
-  </div>
-</div>
+      <div class="h-14 bg-gradient-to-r from-cyan-500 to-blue-500">
+        <header class="text-3xl font-bold underline text-center font-sans">
+          Random Meal Finder
+        </header>
+      <div class="flex justify-items-center">
+        <div id="image-gif" style="width: 50vw" >
+          <div class="py-5 rounded-lg">
+            <img src ="./assets/images/Foodie.gif">
+          </div>
+        </div>
+        <div id="image-gif" style="width: 50vw">
+          <div class="py-5 rounded-lg">
+            <img src ="./assets/images/Gif2.gif">
+          </div>
+        </div>
+        <div id="image-gif" style="width: 50vw" >
+          <div class="py-5 rounded-lg">
+            <img src ="./assets/images/Foodyummy.gif">
+          </div>
+        </div>
+      </div>
+ 
+      <br>
+      <br>
 
-  <br>
-  <br>
-          <div class="grid grid-col-4 grid-flow-col gap-4 ml-20">
-            <div class="row-span-1 md:container md:mx-auto">
-              <div class="card-header text-center">
-                <form>
-                  <label for="mealId">Search for Meal: </label>
-                  <input type="text" id="search-field" class="border border-indigo-500/50"><br><br>
-                  <!-- <label for="specials">Specifications:</label>
-                  <label>
-                    <input mbsc-input id="my-input" data-dropdown="true"/>
-                  </label>
-                  <select id="multiple-group-select">
-                    <optgroup label="Religious specifications:">
-                        <option value="kosher">Kosher</option>
-                        <option value="halal">Halal</option>
-                        <option value="alcohol">No alcohol</option>
-                    </optgroup>
-                    <optgroup label="Allergies:">
-                        <option value="milk">Milk</option>
-                        <option value="eggs">Eggs</option>
-                        <option value="fish">Fish</option>
-                        <option value="shellfish">Shellfish</option>
-                        <option value="nuts">Nuts</option>
-                        <option value="soy">Soy</option>
-                        <option value="wheat">Wheat</option>
-                    </optgroup>
-                    <optgroup label="Diets:">
-                      <option value="vegan">Vegan</option>
-                      <option value="vegetarian">Vegetarian</option>
-                  </optgroup>
-                </select>
-                </select> -->
-                <br><br>
-                  <input type="submit" id="search-btn" value=" Search" class="bg-blue-500/50 hover:bg-blue-700/50 text-white font-bold py-2 px-4 rounded" >
-                </form>
-                
+      <div class="grid grid-col-4 grid-flow-col gap-4 ml-20">
+        <div class="row-span-1 md:container md:mx-auto">
+          <div class="card-header text-center">
+            <form>
+              <label for="mealId">Search for Meal: </label>
+              <input type="text" id="search-field" class="border border-indigo-500/50"><br><br>
+            <br><br>
+              <input type="submit" id="search-btn" value=" Search" class="bg-blue-500/50 hover:bg-blue-700/50 text-white font-bold py-2 px-4 rounded" >
+            </form>
+            <br>
+            <button class="bg-blue-500/50 hover:bg-blue-700/50 text-white font-bold py-2 px-4 rounded" id="search-history">Search History</button>
+            <br>
+            <br>
+            <button class="bg-blue-500/50 hover:bg-blue-700/50 text-white font-bold py-2 px-4 rounded" id="randon-meal">Suprise Me (Random Meal Generator)</button>
+          </div>
+        </div>
 
-                <br>
-                <button class="bg-blue-500/50 hover:bg-blue-700/50 text-white font-bold py-2 px-4 rounded" id="search-history">Search History</button>
-                <br>
-                <br>
-                <button class="bg-blue-500/50 hover:bg-blue-700/50 text-white font-bold py-2 px-4 rounded" id="randon-meal">Suprise Me (Random Meal Generator)</button>
-              </div>
-            </div>
-            <div class="col-span-1 md:container md:mx-auto">
-              <div>
-                <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                  <div class="px-6 py-4" id="child">
-                    <div class="font-bold text-xl mb-2">Random Fact</div>
-                    <img id="poke-img" />
-                    <p class="text-gray-700 text-base" id="display-fact">
-                    </p>
-                  </div>
-                </div>
-            </div>
-            </div>           
-            <div class="col-span-1 md:container md:mx-auto">
-
+        <div class="col-span-1 md:container md:mx-auto">
+            <div>
               <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                <div class="px-6 py-4">
-                  <div class="font-bold text-xl mb-2" id="meal-heading">Meal Instructions</div>
-                  <p class="text-gray-700 text-base" id="meal-inst">
+                <div class="px-6 py-4" id="child">
+                  <div class="font-bold text-xl mb-2">Random Fact</div>
+                  <img id="poke-img" />
+                  <p class="text-gray-700 text-base" id="display-fact">
                   </p>
                 </div>
               </div>
+          </div>
+        </div> 
+
+        <div class="col-span-1 md:container md:mx-auto">
+          <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2" id="meal-heading">Meal Instructions</div>
+              <p class="text-gray-700 text-base" id="meal-inst">
+              </p>
             </div>
-            <div class="row-span-1 md:container md:mx-auto">
-              <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                <div class="px-6 py-4">
-                  <div class="font-bold text-xl mb-2" id="meal-look">How my meal looks?</div>
-                  <div id="meal-img">
-                  </div>
-                </div>
+          </div>
+        </div>
+        <div class="row-span-1 md:container md:mx-auto">
+          <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2" id="meal-look">How my meal looks?</div>
+              <div id="meal-img">
               </div>
             </div>
           </div>
-
-          
-      
-        </body>   
-    </footer>
+        </div>
+      </div>
+</body>   
+</footer>
     <script src="../script.js"></script>
-</body>
 </html>
