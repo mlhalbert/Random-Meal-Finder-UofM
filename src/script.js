@@ -48,6 +48,8 @@ function getFact() {
     mealInst.innerHTML = ""
     fact.innerHTML = ""
 
+    console.log(Math.floor(Math.random() * 100))
+
     if (userInput.value === "") {
         fact.innerHTML = "Please provide input to search. You can try our awesome Random Generator Meal option."
         return;
