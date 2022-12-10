@@ -2,6 +2,7 @@
 // variables for free dictionary random facts
 // random fact display- will need to change after html
 var fact = document.getElementById('display-fact')
+var factTitle = document.getElementById('search-heading')
 var mealInst = document.getElementById('meal-inst')
 var mealHeading = document.getElementById('meal-heading')
 var mealLook = document.getElementById('meal-look')
@@ -16,8 +17,7 @@ var randomButton = document.getElementById('randon-meal');
 var searchHistoryButton = document.getElementById('search-history');
 var clearHistoryButton = document.getElementById('clear-history');
 var historyList = document.getElementById('thelist')
-//word added into api
-//var wordFact = "";
+
 
 // user supplied input
 var userInput = document.getElementById('search-field');
@@ -47,15 +47,16 @@ searchButton.addEventListener('click', function(event){
 
 function getFact() {
     // console.log("get fact function called")
+    // clear each element in the form + cards
     mealImage.innerHTML = ""
     mealInst.innerHTML = ""
     fact.innerHTML = ""
     mealLook.innerHTML = ""
     mealInst.innerHTML = ""
     mealHeading.innerHTML = ""
-    historyList.innerHTML = ""
-
-    console.log(Math.floor(Math.random() * 100))
+    historyList.innerHTML = ""  
+    factTitle.innerHTML = ""
+    // console.log(Math.floor(Math.random() * 100))
 
     if (userInput.value === "") {
         fact.innerHTML = "Please provide input to search. You can try our awesome Random Generator Meal option."
@@ -82,6 +83,7 @@ function getFact() {
                 // console.log(definition)
                 // push data
                 fact.innerHTML = definition;
+                factTitle.innerHTML = "Random fact for " + userInput.value
                 mealSearch()
                 userInput.value = ""
                 
@@ -92,7 +94,8 @@ function getFact() {
                 mealLook.innerHTML = "Here is a Pokemon for you!"
                 mealSearch()
                 randompokemonSearch()
-                userInput.value = ""
+                factTitle.innerHTML = "Random fact for " + userInput.value
+
             }
         })
         .catch(error => {
@@ -179,12 +182,16 @@ function randomMealGenerator() {
             mealHeading.innerHTML = "Meal Instructions for " + data["meals"][0]["strMeal"]
             mealImage.innerHTML = "<img src=" + data["meals"][0]["strMealThumb"] + ">"
             mealLook.innerHTML = "How my meal looks."
+            factTitle.innerHTML = "Random fact for " + data["meals"][0]["strMeal"].trim()
+            console.log(data["meals"][0]["strMeal"].trim())
             
         } 
         if (statusCode == 404 ) {
             // console.log("Failed")
             mealInst.innerHTML = "Sorry pal, we couldn’t find meal/receipe Instructions for the word you were looking for."
             mealHeading.innerHTML = "Meal Instructions not found!"
+            factTitle.innerHTML = "No random fact available for " + data["meals"][0]["strMeal"].trim()
+            console.log(data["meals"][0]["strMeal"].trim())
         }
     })
     .catch(error => {
